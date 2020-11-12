@@ -17,7 +17,7 @@
   <?php
   if(isset($_POST["absenden"])){
 
-    $nummerIn=$_POST["nummerInput"];#
+    $nummerIn=$_POST["nummerInput"];
 
     if(strlen($nummerIn)>=4){
       $uic = str_replace(' ', '', $nummerIn);
