@@ -14,7 +14,7 @@
 
   <form method=post>
   <input type="text" name="nummerInput">
-  <input type="submit" name="absenden" value="Rechnen">
+  <input id="s"type="submit" name="absenden" value="Rechnen">
   </form>
 
   <?php
@@ -43,10 +43,13 @@
 
       }
       $przf = str_split($przf);
+      if(count($przf)>1){
       if($przf[1] != 0){
       $pruefziffer = 10 - $przf[1];
     } else {
       $pruefziffer = 0;
+    }}else{
+      $pruefziffer = 10 - $przf[0];
     }
     if($uicl > 5){
       echo("Die Nummer lautet: <b>".$uic[0].$uic[1].$uic[2].$uic[3]." ".$uic[4].$uic[5].$uic[6]."-".$pruefziffer."</b>");
