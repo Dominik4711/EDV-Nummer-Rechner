@@ -1,85 +1,66 @@
-<html>
+<!DOCTYPE html>
+<html lang="de">
  <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
    <title>EDV-Nummer Rechner</title>
    <link rel="stylesheet" href="style.css">
   </head>
 <body>
-  <h1>EDV-Nummer Rechner</h1>
+<div class="wrapper">  <h1>EDV-Nummer Rechner</h1>
 
-  Nummer eingeben: 
+  <p>Nummer eingeben:</p>
 
   <form method=post>
-  <input type="text" name="nummerInput"> <br><br>
-  <input type="submit" name="absenden" value="Rechnen">
+  <input type="text" name="nummerInput">
+  <input id="s"type="submit" name="absenden" value="Rechnen">
   </form>
 
   <?php
   if(isset($_POST["absenden"])){
 
     $nummerIn=$_POST["nummerInput"];
-    
-    if(strlen($nummerIn)==7){
-      if(substr($nummerIn, -4,1)==" "){
-      $nummerA= array(
-        0 => substr($nummerIn, -7,1),
-        1 => substr($nummerIn, -6,1),
-        2 => substr($nummerIn, -5,1),
-        3 => substr($nummerIn, -3,1),
-        4 => substr($nummerIn, -2,1),
-        5 => substr($nummerIn, -1,1));
-        
-        $verhalten=1;
-      }else{
-        $verhalten=0;
+
+    if(strlen($nummerIn)>=4){
+      $uic = str_replace(' ', '', $nummerIn);
+      $uic = str_replace('-', '', $uic);
+      $uic = str_split($uic); // Split string in elements of array
+      $uicl = count($uic)-1; // Get the lenght of Array
+      for($i=$uicl; $i >= 0; $i = $i - 2){
+        $prf[$i] = $uic[$i] * 2;
       }
-    }elseif(strlen($nummerIn)==6){
-      $nummerA = str_split($nummerIn);
-      $verhalten=1;
-    }else{
-      $verhalten=0;
+      for($i=$uicl-1; $i >= 0; $i = $i - 2){
+        $prf[$i] = $uic[$i];
+      }
+      $przf = 0;
+      for($i=$uicl; $i >= 0; $i = $i-1){
+        if($prf[$i] > 9){
+          $pz = str_split($prf[$i]);
+          $prf[$i] = $pz[0] + $pz[1];
+        }
+        $przf = $prf[$i] + $przf;
+
+      }
+      $przf = str_split($przf);
+      if(count($przf)>1){
+      if($przf[1] != 0){
+      $pruefziffer = 10 - $przf[1];
+    } else {
+      $pruefziffer = 0;
+    }}else{
+      $pruefziffer = 10 - $przf[0];
     }
-
-    
-
-    if($verhalten==1){
-    $erg=$nummerA[0]+$nummerA[2]+$nummerA[4];
-
-    $z=$nummerA[1]*2;
-    if($z>9){
-      $erg=$erg+$z-9;
-    }else{
-      $erg=$erg+$z;
-    }
-
-    $z=$nummerA[3]*2;
-    if($z>9){
-      $erg=$erg+$z-9;
-    }else{
-      $erg=$erg+$z;
-    }
-
-
-    $z=$nummerA[5]*2;
-    if($z>9){
-      $erg=$erg+$z-9;
-    }else{
-      $erg=$erg+$z;
-    }
-
-    $erg=substr($erg, -1);
-
-    if($erg==0){
-      $pruefziffer=0;
-    }else{
-      $pruefziffer=10-$erg;
-    }
-
-    echo("Die Nummer lautet: <b>".$nummerA[0].$nummerA[1].$nummerA[2]." ".$nummerA[3].$nummerA[4].$nummerA[5]."-".$pruefziffer."</b>");
+    if($uicl > 5){
+      echo("Die Nummer lautet: <b>".$uic[0].$uic[1].$uic[2].$uic[3]." ".$uic[4].$uic[5].$uic[6]."-".$pruefziffer."</b>");
+    } elseif($uicl <= 5)
+    echo("Die Nummer lautet: <b>".$uic[0].$uic[1].$uic[2]." ".$uic[3].$uic[4].$uic[5]."-".$pruefziffer."</b>");
     }else{
       echo ("Gib eine geeignete Nummer ein! <br>Beispiel: 078 468)");
     }
 
   }
 ?>
+</div>
 </body>
 </html>
