@@ -11,7 +11,7 @@
 <div class="wrapper">  <h1>Prüfziffern Rechner</h1>
 
   <form method=post>
-  <input type="text" name="nummerInput" placeholder="Nummer eingeben">
+  <input type="number" name="nummerInput" placeholder="Nummer eingeben">
   <input id="s"type="submit" name="absenden" value="Rechnen">
   </form>
 
