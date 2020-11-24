@@ -60,10 +60,5 @@
   }
 ?>
 </div>
-<footer>
-  <a href="#">Impressum</a>
-  <a href="#">Datenschutz</a>
-  <a href="#">Eisenbahn Bebra</a>
-</footer>
 </body>
 </html>
