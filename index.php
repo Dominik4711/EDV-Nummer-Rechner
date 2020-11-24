@@ -50,11 +50,11 @@
       $pruefziffer = 10 - $przf[0];
     }
     if($uicl > 5){
-      echo("Die Nummer lautet: <b>".$uic[0].$uic[1].$uic[2].$uic[3]." ".$uic[4].$uic[5].$uic[6]."-".$pruefziffer."</b>");
+      echo("<p>Die Nummer lautet: <b>".$uic[0].$uic[1].$uic[2].$uic[3]." ".$uic[4].$uic[5].$uic[6]."-".$pruefziffer."</b></p>");
     } elseif($uicl <= 5)
-    echo("Die Nummer lautet: <b>".$uic[0].$uic[1].$uic[2]." ".$uic[3].$uic[4].$uic[5]."-".$pruefziffer."</b>");
+    echo("<p>Die Nummer lautet: <b>".$uic[0].$uic[1].$uic[2]." ".$uic[3].$uic[4].$uic[5]."-".$pruefziffer."</b></p>");
     }else{
-      echo ("Gib eine geeignete Nummer ein! <br>Beispiel: 078 468)");
+      echo ("<p>Gib eine geeignete Nummer ein! <br>Beispiel: 078 468)</p>");
     }
 
   }
