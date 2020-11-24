@@ -8,12 +8,10 @@
    <link rel="stylesheet" href="style.css">
   </head>
 <body>
-<div class="wrapper">  <h1>EDV-Nummer Rechner</h1>
-
-  <p>Nummer eingeben:</p>
+<div class="wrapper">  <h1>Prüfziffern Rechner</h1>
 
   <form method=post>
-  <input type="text" name="nummerInput">
+  <input type="text" name="nummerInput" placeholder="Nummer eingeben">
   <input id="s"type="submit" name="absenden" value="Rechnen">
   </form>
 
@@ -34,17 +32,17 @@
         $prf[$i] = $uic[$i];
       }
       $przf = 0;
-      for($i=$uicl; $i >= 0; $i = $i-1){
+      for($i=$uicl; $i >= 0; $i = $i-1){ //Create loop for calculating "Prüfziffer" for 21212121 and so on
         if($prf[$i] > 9){
-          $pz = str_split($prf[$i]);
+          $pz = str_split($prf[$i]); // Split string into digit array
           $prf[$i] = $pz[0] + $pz[1];
         }
-        $przf = $prf[$i] + $przf;
-
+        $przf = $prf[$i] + $przf; // create sum of array elements.
       }
+
       $przf = str_split($przf);
-      if(count($przf)>1){
-      if($przf[1] != 0){
+      if(count($przf)>1){ // Check for sum < 10. Do else statement.
+      if($przf[1] != 0){ // If sum is > 10 just take second digit and subtract it.
       $pruefziffer = 10 - $przf[1];
     } else {
       $pruefziffer = 0;
@@ -52,11 +50,11 @@
       $pruefziffer = 10 - $przf[0];
     }
     if($uicl > 5){
-      echo("Die Nummer lautet: <b>".$uic[0].$uic[1].$uic[2].$uic[3]." ".$uic[4].$uic[5].$uic[6]."-".$pruefziffer."</b>");
+      echo("<p>Die Nummer lautet: <b>".$uic[0].$uic[1].$uic[2].$uic[3]." ".$uic[4].$uic[5].$uic[6]."-".$pruefziffer."</b></p>");
     } elseif($uicl <= 5)
-    echo("Die Nummer lautet: <b>".$uic[0].$uic[1].$uic[2]." ".$uic[3].$uic[4].$uic[5]."-".$pruefziffer."</b>");
+    echo("<p>Die Nummer lautet: <b>".$uic[0].$uic[1].$uic[2]." ".$uic[3].$uic[4].$uic[5]."-".$pruefziffer."</b></p>");
     }else{
-      echo ("Gib eine geeignete Nummer ein! <br>Beispiel: 078 468)");
+      echo ("<p>Gib eine geeignete Nummer ein! <br>Beispiel: 078 468)</p>");
     }
 
   }

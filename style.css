@@ -17,19 +17,40 @@ body{
   height: 100vh;
 }
 .wrapper{
-  width: 75%;
+  width: 50%;
   margin: 0 auto;
+}
+h1{
+  font-size: 1em;
 }
 p{
   font-weight: 300;
+  font-size: 0.5em;
 }
 form{
-    font-size: 30pt;
+    font-size: 12pt;
+
+    outline: :none;
 }
 input{
+    -webkit-appearance: none;
     color: #000;
-    height: 100px;
     width: 100%;
     border: none;
     background-color: #fff;
+    outline: none;
+    padding: 0.5em;
+    font-size: 15pt
+}
+#s{
+  background: linear-gradient(to bottom, #4f89d4, #385e90);
+  color: white;
+}
+@media(max-width: 768px), handheld{
+  .wrapper{
+    width: 75%;
+  }
+  p{
+    font-size: 3vh;
+  }
 }
