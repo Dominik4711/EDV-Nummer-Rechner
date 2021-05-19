@@ -11,7 +11,7 @@
 <div class="wrapper">  <h1>Prüfziffern Rechner</h1>
 
   <form method=post>
-  <input type="number" name="nummerInput" placeholder="Nummer eingeben">
+  <input type="text" name="nummerInput" placeholder="Nummer eingeben">
   <input id="s"type="submit" name="absenden" value="Rechnen">
   </form>
 
@@ -49,15 +49,17 @@
     }}else{
       $pruefziffer = 10 - $przf[0];
     }
-    if($uicl > 5){
+    if($uicl == 5){
+      echo("<p>Die Nummer lautet: <b>".$uic[0].$uic[1].$uic[2]." ".$uic[3].$uic[4].$uic[5]."-".$pruefziffer."</b></p>");
+    } elseif($uicl == 6){
       echo("<p>Die Nummer lautet: <b>".$uic[0].$uic[1].$uic[2].$uic[3]." ".$uic[4].$uic[5].$uic[6]."-".$pruefziffer."</b></p>");
-    } elseif($uicl <= 5)
-    echo("<p>Die Nummer lautet: <b>".$uic[0].$uic[1].$uic[2]." ".$uic[3].$uic[4].$uic[5]."-".$pruefziffer."</b></p>");
+    }elseif($uicl == 10){
+      echo("<p>Die Nummer lautet: <b>".$uic[0].$uic[1]." ".$uic[2].$uic[3]." ".$uic[4]." ".$uic[5].$uic[6].$uic[7]." ".$uic[8].$uic[9].$uic[10]."-".$pruefziffer."</b></p>");
     }else{
       echo ("<p>Gib eine geeignete Nummer ein! <br>Beispiel: 078 468)</p>");
     }
-
   }
+}
 ?>
 </div>
 </body>
